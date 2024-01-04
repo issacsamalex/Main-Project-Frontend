@@ -4,6 +4,7 @@ import Main from './Main'
 import Signup from './Signup';
 import Login from './Login';
 import ProjectDash from './projectDash/ProjectDash';
+import StudentDash from './studentDash/StudentDash';
 
 // react routes
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: '/project-dash',
     element: <ProjectDash/>
+  },
+  {
+    path: '/student-dash',
+    element: <StudentDash/>
   }
 ])
 
