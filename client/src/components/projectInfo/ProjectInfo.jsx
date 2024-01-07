@@ -80,16 +80,16 @@ const ProjectInfo = ({ intern, handleClose }) => {
             </DialogActions>
             {/* Dialog for user verification of project */}
             <Dialog open={openDialog} onClose={handleCloseDialog}>
-                <DialogTitle>Submit Project</DialogTitle>
+                <DialogTitle>Select Project</DialogTitle>
                 <DialogContent>
                     <Typography>
-                        Are you sure you want to submit this project?
+                        Are you sure you want to select this project, once chosen can't be changed?
                     </Typography>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleCloseDialog}>Close</Button>
                     <Button onClick={handleProjectSubmit}>
-                        Submit
+                        Select
                     </Button>
                 </DialogActions>
             </Dialog>
