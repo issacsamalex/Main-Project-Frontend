@@ -8,6 +8,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -21,7 +22,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 const ProjectInfo = ({ intern, handleClose }) => {
     const [project, setProject] = useState('');
     const [openDialog, setOpenDialog] = useState(false);
-
+    const navigate=useNavigate()
     useEffect(() => {
         console.log('Updated Project:', project);
     }, [project]);
@@ -37,6 +38,7 @@ const ProjectInfo = ({ intern, handleClose }) => {
     const handleProjectSubmit = () => {
         setProject(intern.id);
         localStorage.setItem('selectedProject', intern.id);
+        navigate('/project-dash')
         handleCloseDialog();
     };
 
