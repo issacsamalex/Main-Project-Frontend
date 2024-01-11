@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
@@ -7,11 +7,25 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import Grid from '@mui/material/Grid';
 import ProjectInfo from './ProjectInfo';
-
+import axios from 'axios'
 
 const ProjectList = () => {
     const [selectedProject, setSelectedProject] = useState(null);
+    const [internshipData, setInternshipData] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/projects');
+                const data = response.data;
 
+                setInternshipData(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []); 
     const handleOpenDialog = (project) => {
         setSelectedProject(project);
     };
@@ -20,40 +34,26 @@ const ProjectList = () => {
         setSelectedProject(null);
     };
 
-    const internshipData = [
-        {
-            'id': '001',
-            'name': 'Web Development',
-            'details': 'Internship on Web development',
-            'img': 'web-development',
-        },
-        {
-            'id': '002',
-            'name': 'AI-ML',
-            'details': 'Internship on AI-ML',
-            'img': 'ai-ml',
-        },
-    ];
 
     return (
         <Fragment>
             <Grid container spacing={2}>
                 {internshipData.map((intern) => (
-                    <Grid item key={intern.id} xs={12} sm={6} md={4}>
+                    <Grid item key={intern._id} xs={12} sm={6} md={4}>
                         <Card sx={{ maxWidth: 345 }}>
                             <CardActionArea>
                                 <CardMedia
                                     component='img'
                                     height='140'
-                                    image={`./images/${intern.img}.jpg`}
-                                    alt={intern.name}
+                                    image={intern.img}
+                                    alt={intern.title}
                                 />
                                 <CardContent>
                                     <Typography gutterBottom variant='h5' component='div'>
-                                        {intern.name}
+                                        {intern.title}
                                     </Typography>
                                     <Typography variant='body2' color='text.secondary'>
-                                        {intern.details}
+                                        {intern.subtitle}
                                     </Typography>
                                 </CardContent>
                                 <Button onClick={() => handleOpenDialog(intern)}>
