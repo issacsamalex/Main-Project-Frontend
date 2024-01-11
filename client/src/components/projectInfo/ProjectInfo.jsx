@@ -36,8 +36,8 @@ const ProjectInfo = ({ intern, handleClose }) => {
     };
 
     const handleProjectSubmit = () => {
-        setProject(intern.id);
-        localStorage.setItem('selectedProject', intern.id);
+        setProject(intern._id);
+        localStorage.setItem('selectedProject', intern._id);
         navigate('/project-dash')
         handleCloseDialog();
     };
@@ -48,8 +48,8 @@ const ProjectInfo = ({ intern, handleClose }) => {
             aria-labelledby='customized-dialog-title'
             open={true}
         >
-            <DialogTitle sx={{ m: 3, p: 2 }} id='customized-dialog-title'>
-                {intern.name}
+            <DialogTitle sx={{ m: 1, p: 1 }} id='customized-dialog-title'>
+                <Typography variant='h3'>{intern.title}</Typography>
             </DialogTitle>
             <IconButton
                 aria-label='close'
@@ -63,15 +63,15 @@ const ProjectInfo = ({ intern, handleClose }) => {
             >
                 <CloseIcon />
             </IconButton>
-            <DialogContent>
+            <DialogContent style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <img
-                    src={`./images/${intern.img}.jpg`}
-                    height={150}
-                    alt={intern.name}
+                    src={intern.img}
+                    height={200}
+                    alt={intern.title}
                 />
             </DialogContent>
             <DialogContent>
-                <Typography gutterBottom>{intern.details}</Typography>
+                <Typography gutterBottom>{intern.description}</Typography>
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleOpenDialog}>
