@@ -15,7 +15,7 @@ const ProjectList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/projects');
+                const response = await axios.get('http://localhost:3001/api/v1/dash/student_dash');
                 const data = response.data;
 
                 setInternshipData(data);
@@ -23,7 +23,6 @@ const ProjectList = () => {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
     }, []); 
     const handleOpenDialog = (project) => {
