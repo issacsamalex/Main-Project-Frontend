@@ -1,18 +1,29 @@
-import { Box, Container } from '@mui/material'
-import React from 'react'
-import NavBarStudentView from '../navBar/NavBarStudentView'
+import { Box, styled, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import React from "react";
+import NavBarStudentView from "../navBar/NavBarStudentView";
+import '../../styles/dashBoard.css'
+import ProjectOverview from "../../pages/projectOverview/ProjectOverview";
+import Sidenav from "../common/Sidenav";
 
 const ProjectDash = () => {
+  const CustomBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "left",
+    gap: theme.spacing(10),
+    marginTop: theme.spacing(1),
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "center",
+      textAlign: "center",
+    },
+  }));
+
   return (
     <>
-    <Box>
-        <Container>
-            <NavBarStudentView/>
-            <h1>Headline</h1>
-        </Container>
-    </Box>
+      <Sidenav/>
     </>
-  )
-}
+  );
+};
 
-export default ProjectDash
+export default ProjectDash;

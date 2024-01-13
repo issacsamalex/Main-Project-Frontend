@@ -33,7 +33,7 @@ import Navbar from './navBar/Navbar';
 const main = () => {
   return (
     <>
-    <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "80vh" }}>
+    <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "100vh" }}>
       <Container>
         <Navbar/>
       <CustomBox>
