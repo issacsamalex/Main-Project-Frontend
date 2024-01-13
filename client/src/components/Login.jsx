@@ -35,7 +35,9 @@ const Login = () => {
       const response = await axios.post(LOGIN_URL, {username, password}).then((response) => {
         if(response){
           const accessToken = response?.data?.accessToken
+          const userID = response?.data?.userID
           localStorage.setItem('user', accessToken)
+          localStorage.setItem('userID', userID)
         }
         setUserName('');
         setPassword('');

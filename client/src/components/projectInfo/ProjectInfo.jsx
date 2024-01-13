@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -38,6 +39,8 @@ const ProjectInfo = ({ intern, handleClose }) => {
     const handleProjectSubmit = () => {
         setProject(intern._id);
         localStorage.setItem('selectedProject', intern._id);
+        const userID = localStorage.getItem('userID')
+        axios.put(`http://localhost:3001/api/v1/dash/student/update/${userID}`, {project_id: intern._id, enrolled_date: Date.now()})
         navigate('/project-dash')
         handleCloseDialog();
     };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -35,10 +35,22 @@ import Week2pageSub from '../../pages/weeklySubmission/Week2pageSub';
 import Week3pageSub from '../../pages/weeklySubmission/Week3pageSub';
 import Week4pageSub from '../../pages/weeklySubmission/Week4pageSub';
 import FinalReportSubmission from '../../pages/finalReport/FinalReportSubmission';
+import axios from 'axios';
 
 const drawerWidth = 240;
 
 const Sidenav = () => {
+
+    const [projectId, setProjectId] = useState('')
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const userID = localStorage.getItem('userID');
+            const response = await axios.get(`http://localhost:3001/api/v1/dash/student/user/${userID}`)
+            setProjectId(response.data.project_id)
+            const project = await axios.get(`http://localhost:3001/api/v1/dash/project/selected/${projectId}`)
+        } 
+    })
 
     const NavbarLogo = styled("img")(({ theme }) => ({
         cursor: "pointer",
