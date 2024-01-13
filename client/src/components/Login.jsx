@@ -36,13 +36,15 @@ const Login = () => {
         if(response){
           const accessToken = response?.data?.accessToken
           const userID = response?.data?.userID
-          localStorage.setItem('user', accessToken)
+          localStorage.setItem('token', accessToken)
           localStorage.setItem('userID', userID)
         }
+        const projectID = response?.data?.projectID
         setUserName('');
         setPassword('');
         toast.success('logged in successfully', {position:"top-right"});
-        navigate('/student-dash')
+        projectID ? navigate('/project-dash') : navigate('/student-dash');
+        
         return response.data
         
       })

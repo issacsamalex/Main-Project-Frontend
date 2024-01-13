@@ -36,13 +36,17 @@ import Week3pageSub from '../../pages/weeklySubmission/Week3pageSub';
 import Week4pageSub from '../../pages/weeklySubmission/Week4pageSub';
 import FinalReportSubmission from '../../pages/finalReport/FinalReportSubmission';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const drawerWidth = 240;
 
 const Sidenav = () => {
-
+    const navigate=useNavigate()
     const [projectId, setProjectId] = useState('')
-
+    const handleLogout = () => {
+      localStorage.removeItem('token');
+      navigate('/');
+    };
     useEffect(() => {
         const fetchData = async () => {
             const userID = localStorage.getItem('userID');
@@ -90,7 +94,8 @@ const Sidenav = () => {
           <CustomButton
           backgroundColor="#134987"
           color="#fff"
-          buttonText="Log out"
+          buttonText="Logout"
+          onclick={handleLogout}
           />
           </Box>
         </Toolbar>

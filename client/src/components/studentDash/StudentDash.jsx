@@ -5,7 +5,7 @@ import ProjectList from '../projectInfo/ProjectList';
 import axios from 'axios';
 
 const StudentDash = () => {
-  const accessToken = localStorage.getItem('user');
+  const accessToken = localStorage.getItem('token');
   const [username, setUserName] = useState('');
 
   const fetchData = async (accessToken) => {
