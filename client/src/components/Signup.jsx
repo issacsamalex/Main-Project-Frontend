@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 import React, { useRef, useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import { FaRegUser } from "react-icons/fa";
@@ -191,4 +190,4 @@ const handleSubmit = async () => {
 }
 
 export default Signup
->>>>>>> 00f51fa1100053d4735a7cc0cee1b7710d5986d9
+
