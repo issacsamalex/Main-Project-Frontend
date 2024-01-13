@@ -7,6 +7,7 @@ import CustomButton from "../customComponents/CustomButton";
 import {
   styled,
 } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 
 
@@ -79,12 +80,12 @@ const Navbar = () => {
         gap: "20px",
       }}
     >
-      <NavLink variant="body2">Log In</NavLink>
-      <CustomButton
+      <Link to={'/login'} style={{ textDecoration: "none"}}><NavLink variant="body2">Log In</NavLink></Link>
+      <Link to={'/signup'} style={{ textDecoration: "none"}}><CustomButton
         backgroundColor="#134987"
         color="#fff"
         buttonText="Sign up"
-      />
+      /></Link>
     </Box>
   </NavbarContainer>
   )

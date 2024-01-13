@@ -1,0 +1,59 @@
+[
+    {
+        "title": "Referance Material",
+        "icon": "bi bi-file-earmark-fill",
+        "childrens": [
+            {
+                "title": "Week 1",
+                "icon": "bi bi-calendar-week-fill",
+                "path": "/project-dash/referance/week1"
+            },
+            {
+                "title": "Week 2",
+                "icon": "bi bi-calendar-week-fill",
+                "path": "/referance/week2"
+            },
+            {
+                "title": "Week 3",
+                "icon": "bi bi-calendar-week-fill",
+                "path": "/referance/week3"
+            },
+            {
+                "title": "Week 4",
+                "icon": "bi bi-calendar-week-fill",
+                "path": "/referance/week4"
+            }
+        ]
+    },
+    {
+        "title": "Weekly Submission",
+        "icon": "bi bi-sticky-fill",
+        "childrens": [
+            {
+                "title": "Week 1",
+                "icon": "bi bi-calendar-week-fill",
+                "path": "/submission/week1"
+            },
+            {
+                "title": "Week 2",
+                "icon": "bi bi-calendar-week-fill",
+                "path": "/submission/week2"
+            },
+            {
+                "title": "Week 3",
+                "icon": "bi bi-calendar-week-fill",
+                "path": "/submission/week3"
+            },
+            {
+                "title": "Week 4",
+                "icon": "bi bi-calendar-week-fill",
+                "path": "/submission/week4"
+            }
+        ]
+    },
+    {
+        "title": "Final Project Submission",
+        "icon": "bi bi-kanban-fill",
+        "path": "/submission/final"
+    }
+]

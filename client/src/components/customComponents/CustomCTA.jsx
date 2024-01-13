@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, styled } from "@mui/material";
 
-const CustomButton = ({
+const CustomCTA = ({
     backgroundColor,
     color,
     buttonText,
@@ -9,7 +9,8 @@ const CustomButton = ({
     guideBtn,
     getStartedBtn,
     onclick,
-  }) => { 
+}) => {
+
     const CustomButton = styled(Button)(({ theme }) => ({
         backgroundColor: backgroundColor,
         color: color,
@@ -21,6 +22,7 @@ const CustomButton = ({
         textTransform: "none",
         display: "block",
         border: "2px solid #134987",
+        width: "480px",
         "&:hover": {
           backgroundColor: color,
           color: backgroundColor,
@@ -36,10 +38,8 @@ const CustomButton = ({
         },
       }));
 
-    
-
   return <CustomButton onClick={onclick}>{buttonText}</CustomButton>
   
 }
 
-export default CustomButton
+export default CustomCTA
