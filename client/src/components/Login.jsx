@@ -40,6 +40,7 @@ const Login = () => {
         setUserName('');
         setPassword('');
         toast.success('logged in successfully', {position:"top-right"});
+        navigate('/student-dash')
         return response.data
         
       })
@@ -75,7 +76,7 @@ const Login = () => {
           
         <TextField
         id="outlined-basic"
-        label="username"
+        label="Username"
         variant="outlined"
         fullWidth
         ref={userRef}
@@ -89,7 +90,7 @@ const Login = () => {
           
         <TextField
           id="outlined-password-input"
-          label="password"
+          label="Password"
           type="password"
           fullWidth
           autoComplete="current-password"
@@ -99,13 +100,13 @@ const Login = () => {
         </div>
       </div>
       <div className="login-link">
-        new user?  <Link to={'/signup'} style={{ textDecoration: "none"}}><span>Sign up</span></Link>
+        New user?  <Link to={'/signup'} style={{ textDecoration: "none"}}><span>Sign up</span></Link>
       </div>
       <div className="submit-container">
         <CustomCTA
         backgroundColor="#134987"
         color="#fff"
-        buttonText="Log in"
+        buttonText="Login"
         onclick={handleSubmit}
         />
       </div>

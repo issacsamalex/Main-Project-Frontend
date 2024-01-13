@@ -107,7 +107,7 @@ const handleSubmit = async () => {
           
         <TextField
         id="outlined-basic" 
-        label="username" 
+        label="Username" 
         variant="outlined" 
         fullWidth
         ref={userRef}
@@ -134,7 +134,7 @@ const handleSubmit = async () => {
           
         <TextField
         id="outlined-basic"
-        label="email"
+        label="Email"
         variant="outlined"
         fullWidth
         onChange={(event)=> setEmail(event.target.value)}
@@ -153,7 +153,7 @@ const handleSubmit = async () => {
           
         <TextField
           id="outlined-password-input"
-          label="password"
+          label="Password"
           type="password"
           fullWidth
           onChange={(event)=> setPassword(event.target.value)}
@@ -174,7 +174,7 @@ const handleSubmit = async () => {
 
       </div>
       <div className="login-link">
-        already a user?  <Link to={'/login'} style={{ textDecoration: "none"}}><span>log in</span></Link>
+        Already a user?  <Link to={'/login'} style={{ textDecoration: "none"}}><span>Login</span></Link>
       </div>
       <div className="submit-container">
         <CustomCTA
