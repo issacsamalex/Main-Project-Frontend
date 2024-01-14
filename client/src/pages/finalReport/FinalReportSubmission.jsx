@@ -6,6 +6,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CustomButton from '../../components/customComponents/CustomButton';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const bull = (
     <Box
@@ -16,15 +18,38 @@ const bull = (
     </Box>
   );
 
-const card = (
-    <React.Fragment>
+
+const FinalReportSubmission = ({props}) => {
+
+    const editor = useRef(null);
+    const [content, setContent] = useState('');
+
+    const onSubmit = async () => {
+      if(content){
+        const userID = localStorage.getItem('userID')
+        await axios.put(`http://localhost:3001/api/v1/dash/student/update/${userID}`, {finalsub: content})
+        .then((response)=>{
+        toast.success(response.data.message, {position:"top-right"});
+        })
+        setContent('');
+        window.location.reload();
+      }else{
+        toast.error('Empty content', {position:"bottom-right"});
+      }
+    }
+
+  return (
+    <>
+    <Container>
+    <Box sx={{ minWidth: 275 }}>
+      <Card variant="outlined">
       <CardContent>
         <Typography variant="h5" component="div" gutterBottom>
           Final Project Report Submission
         </Typography>
       </CardContent>
       <CardContent>
-        <a href='https://drive.google.com/file/d/0B1HXnM1lBuoqMzVhZjcwNTAtZWI5OS00ZDg3LWEyMzktNzZmYWY2Y2NhNWQx/view?hl=en&resourcekey=0-5DqnTtXPFvySMiWstuAYdA' target='blank'><Typography variant="body1" color="ButtonText">Sample Project Report</Typography></a>
+        <a href={props.finalreport} target='blank'><Typography variant="body1" color="ButtonText">Sample Project Report</Typography></a>
       </CardContent>
       <CardContent>
         <Typography>What all to submit?</Typography>
@@ -32,31 +57,17 @@ const card = (
         {bull} Google Docs link
       </Typography>
       </CardContent>
-        
-    </React.Fragment>
-  );
-
-const FinalReportSubmission = () => {
-
-    const editor = useRef(null);
-    const [content, setContent] = useState('');
-
-  return (
-    <>
-    <Container>
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}
       <JoditEditor
       ref={editor}
       value={content}
       onChange={newContent => setContent(newContent)}
       />
-      {content}
       <Box sx={{ display: 'flex', justifyContent: 'center', padding: '30px'}}>
       <CustomButton
       backgroundColor="#134987"
       color="#fff"
       buttonText="Submit"
+      onclick={onSubmit}
       />
       </Box>
       </Card>

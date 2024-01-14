@@ -6,6 +6,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CustomButton from '../../components/customComponents/CustomButton';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 
 const bull = (
@@ -29,6 +31,9 @@ const card = (
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
         {bull} Github Repo link
       </Typography>
+      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        {bull} Hosted link
+      </Typography>
       </CardContent>
         
     </React.Fragment>
@@ -38,6 +43,19 @@ const Week4pageSub = () => {
 
     const editor = useRef(null);
     const [content, setContent] = useState('');
+
+    const onSubmit = async () => {
+      if(content){
+        const userID = localStorage.getItem('userID');
+      await axios.put(`http://localhost:3001/api/v1/dash/student/update/${userID}`, {week4sub: content})
+      .then((response)=>{
+        toast.success(response.data.message, {position:"top-right"});
+      })
+      setContent('');
+      }else{
+        toast.error('Empty content', {position:"bottom-right"});
+      }
+    }
 
   return (
     <>
@@ -49,12 +67,12 @@ const Week4pageSub = () => {
       value={content}
       onChange={newContent => setContent(newContent)}
       />
-      {content}
       <Box sx={{ display: 'flex', justifyContent: 'center', padding: '30px'}}>
       <CustomButton
       backgroundColor="#134987"
       color="#fff"
       buttonText="Submit"
+      onclick={onSubmit}
       />
       </Box>
       </Card>

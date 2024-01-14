@@ -18,46 +18,43 @@ const bull = (
     </Box>
   );
 
-const card = (
-    <React.Fragment>
-      <CardContent>
-        <Typography variant="h5" component="div" gutterBottom>
-          Submission section (week 3)
-        </Typography>
-      </CardContent>
-      <CardContent>
-        <Typography>What all to submit?</Typography>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        {bull} Github Repo link
-      </Typography>
-      </CardContent>
-        
-    </React.Fragment>
-  );
-
-const Week3pageSub = () => {
+const VoceSubmission = ({props}) => {
 
     const editor = useRef(null);
     const [content, setContent] = useState('');
 
     const onSubmit = async () => {
-      if(content){
-        const userID = localStorage.getItem('userID');
-      await axios.put(`http://localhost:3001/api/v1/dash/student/update/${userID}`, {week3sub: content})
-      .then((response)=>{
-        toast.success(response.data.message, {position:"top-right"});
-      })
-      setContent('');
-      }else{
-        toast.error('Empty content', {position:"bottom-right"});
-      }
+        if(content){
+            const userID = localStorage.getItem('userID')
+            await axios.put(`http://localhost:3001/api/v1/dash/student/update/${userID}`, {vivasub: content})
+            .then((response)=>{
+            toast.success(response.data.message, {position:"top-right"});
+            })
+            setContent('');
+        }else{
+            toast.error('Empty content', {position:"bottom-right"});
+        }
     }
-    
+
   return (
     <>
-    <Container>
+     <Container>
     <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}
+      <Card variant="outlined">
+      <CardContent>
+        <Typography variant="h5" component="div" gutterBottom>
+          Viva Voce Submission
+        </Typography>
+      </CardContent>
+      <CardContent>
+        <a href={props.vivavocereport} target='blank'><Typography variant="body1" color="ButtonText">Sample Viva Voce Report</Typography></a>
+      </CardContent>
+      <CardContent>
+        <Typography>What all to submit?</Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        {bull} Google Docs link
+      </Typography>
+      </CardContent>
       <JoditEditor
       ref={editor}
       value={content}
@@ -78,4 +75,4 @@ const Week3pageSub = () => {
   )
 }
 
-export default Week3pageSub
+export default VoceSubmission
