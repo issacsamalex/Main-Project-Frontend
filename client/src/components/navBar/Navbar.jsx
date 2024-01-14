@@ -65,11 +65,6 @@ const Navbar = () => {
         <NavbarLogo sx={{width: "150px"}} src={logoImg} alt="logo" />
       </Box>
 
-      <NavbarLinksBox>
-        <NavLink variant="body2">Home</NavLink>
-        <NavLink variant="body2">Features</NavLink>
-        <NavLink variant="body2">Contact</NavLink>
-      </NavbarLinksBox>
     </Box>
 
     <Box

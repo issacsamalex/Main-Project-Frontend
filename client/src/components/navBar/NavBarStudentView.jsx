@@ -67,9 +67,7 @@ const NavBarStudentView = () => {
           <NavbarLogo sx={{ width: "150px" }} src={logoImg} alt="logo" />
         </Box>
 
-        <NavbarLinksBox>
-            <NavLink variant="body2">Home</NavLink>
-        </NavbarLinksBox>
+        
       </Box>
 
       <Box
