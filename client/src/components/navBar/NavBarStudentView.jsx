@@ -7,11 +7,10 @@ import CustomButton from "../customComponents/CustomButton";
 import {
   styled,
 } from "@mui/material";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NavBarStudentView = () => {
   const navigate = useNavigate();
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/');
@@ -69,9 +68,7 @@ const NavBarStudentView = () => {
         </Box>
 
         <NavbarLinksBox>
-          <NavLink variant="body2">Home</NavLink>
-          <NavLink variant="body2">Features</NavLink>
-          <NavLink variant="body2">Contact</NavLink>
+            <NavLink variant="body2">Home</NavLink>
         </NavbarLinksBox>
       </Box>
 
