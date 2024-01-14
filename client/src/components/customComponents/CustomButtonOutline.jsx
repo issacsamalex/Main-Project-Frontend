@@ -6,6 +6,7 @@ const CustomButtonOutline = ({
     borderColor,
     color,
     buttonText,
+    onclick
   }) => {
     const CustomButton = styled(Button)(({ theme }) => ({
         backgroundColor: backgroundColor,
@@ -25,7 +26,7 @@ const CustomButtonOutline = ({
           borderColor: backgroundColor,
         },
       }));
-  return <CustomButton>{buttonText}</CustomButton>
+  return <CustomButton onClick={onclick}>{buttonText}</CustomButton>
 }
 
 export default CustomButtonOutline

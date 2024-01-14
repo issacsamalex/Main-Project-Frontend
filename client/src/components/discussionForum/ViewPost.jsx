@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import AddComment from './AddComment';
 import CreatePost from './CreatePost';
-import NavBarStudentView from '../navBar/NavBarStudentView';
 
 const ViewPost = () => {
     const [posts, setPosts] = useState([]);
@@ -41,7 +40,6 @@ const ViewPost = () => {
 
     return (
         <>
-            <NavBarStudentView />
             <Container>
                 <Paper elevation={3} style={{ padding: '20px', marginTop: '20px' }}>
                     <Typography variant="h4" gutterBottom>
@@ -73,7 +71,7 @@ const ViewPost = () => {
                                                                 variant="body2"
                                                                 color="text.primary"
                                                             >
-                                                                {comment.author.username}
+                                                                
                                                                 Reply: {comment.text}
                                                             </Typography>
                                                             <br />

@@ -22,7 +22,6 @@ function App() {
       <Route path="/navbar" element={<Sidenav/>}></Route>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
-      <Route path="/discussion-forum" element={<DiscussionForum/>}/>
       <Route path="/add-post" element={<CreatePost/>}/>
       <Route path="/student-dash" element={<StudentDash/>}/>
       <Route path="/project-dash" element={<ProjectDash/>}>

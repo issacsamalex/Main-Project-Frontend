@@ -39,6 +39,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import VoceSubmission from '../../pages/vivaVoce/VoceSubmission';
+import DiscussionForum from '../discussionForum/DiscussionForum';
 
 
 const drawerWidth = 240;
@@ -158,6 +159,7 @@ const Sidenav = () => {
             borderColor= "#137d87"
             color="#137d87"
             buttonText="Discussion Forum"
+            onclick={()=> setMenuData("discussionforum")}
             />
             <CustomButtonOutline
             backgroundColor="none"
@@ -326,6 +328,7 @@ const Sidenav = () => {
         {menuData === "submissionweek4" && <Week4pageSub/>}
         {menuData === "finalreportsubmission" && <FinalReportSubmission props={projectDetails}/>}
         {menuData === "vivavocesubmission" && <VoceSubmission props={projectDetails}/>}
+        {menuData === "discussionforum" && <DiscussionForum/>}
       </Box>
     </Box>
   )
