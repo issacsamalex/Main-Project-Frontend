@@ -1,6 +1,5 @@
 import React from 'react';
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import logoImg from "../../media/main-logo.png";
 import { Container } from "@mui/system";
 import CustomButton from "../customComponents/CustomButton";
@@ -16,25 +15,9 @@ const NavBarStudentView = () => {
     navigate('/');
   };
 
-  const NavLink = styled(Typography)(({ theme }) => ({
-    fontSize: "14px",
-    color: "#4F5361",
-    fontWeight: "bold",
-    cursor: "pointer",
-    "&:hover": {
-      color: "#70a2da",
-    },
-  }));
+  
 
-  const NavbarLinksBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: theme.spacing(3),
-    [theme.breakpoints.down("md")]: {
-      display: "none",
-    },
-  }));
+  
 
   const NavbarContainer = styled(Container)(({ theme }) => ({
     display: "flex",

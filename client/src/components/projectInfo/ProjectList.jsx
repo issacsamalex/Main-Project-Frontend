@@ -7,7 +7,8 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import Grid from '@mui/material/Grid';
 import ProjectInfo from './ProjectInfo';
-import axios from 'axios'
+import axios from '../../axiosinterceptor';
+import axiosInstance from '../../axiosinterceptor'
 
 const ProjectList = () => {
     const [selectedProject, setSelectedProject] = useState(null);
@@ -15,7 +16,7 @@ const ProjectList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/v1/dash/project');
+                const response = await axios.get('/api/v1/dash/project');
                 const data = response.data;
                 setInternshipData(data);
             } catch (error) {

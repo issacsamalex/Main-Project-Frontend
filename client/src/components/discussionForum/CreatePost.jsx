@@ -9,7 +9,8 @@ import {
     DialogActions,
     Box,
 } from '@mui/material';
-import axios from 'axios';
+// import axios
+import axios from '../../axiosinterceptor'
 
 const CreatePost = ({ open, handleClose, setPosts }) => {
     const [title, setTitle] = useState('');
@@ -27,7 +28,7 @@ const CreatePost = ({ open, handleClose, setPosts }) => {
                 throw new Error('Token is missing');
             }
 
-            const response = await axios.post('http://localhost:3001/api/v1/post/create', {
+            const response = await axios.post('/api/v1/post/create', {
                 title,
                 content,
             }, {

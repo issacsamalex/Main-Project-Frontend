@@ -10,14 +10,14 @@ import { IoIosCloseCircle } from "react-icons/io";
 import '../styles/loginpage.css'
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-import axios from 'axios'
+// import axios from 'axios'
 import CustomCTA from './customComponents/CustomCTA';
+import axios from '../axiosinterceptor'
 
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
+const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const SIGNUP_URL = 'http://localhost:3001/api/v1/auth/signup'
 
 const Signup = () => {
 
@@ -39,7 +39,6 @@ const Signup = () => {
   const [passwordFocus, setPasswordFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
 
 useEffect(() => {
   userRef.current.focus();
@@ -71,7 +70,7 @@ const handleSubmit = async () => {
     return;
   }
   try {
-    const response = await axios.post(SIGNUP_URL, {username, email, password}).then((response)=> {
+    const response = await axios.post('/api/v1/auth/signup', {username, email, password}).then((response)=> {
       toast.success(response.data.message, {position:"top-right"})
       navigate('/login')
     })
@@ -81,6 +80,8 @@ const handleSubmit = async () => {
   } catch (error) {
     if(!error?.response){
       setErrMsg('No Server Response')
+    } else if(error.response?.status === 400){
+      setErrMsg('You did not meet the pass criteria in the exit exam')
     } else if (error.response?.status === 409){
       setErrMsg('Username already exists')
     } else {

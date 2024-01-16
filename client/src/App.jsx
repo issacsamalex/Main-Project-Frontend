@@ -10,8 +10,8 @@ import ProjectDash from "./components/projectDash/ProjectDash";
 import ProjectOverview from "./pages/projectOverview/ProjectOverview";
 import Sidenav from "./components/common/Sidenav";
 import StudentDash from "./components/studentDash/StudentDash";
-import DiscussionForum from "./components/discussionForum/DiscussionForum";
 import CreatePost from "./components/discussionForum/CreatePost";
+import PrivateRoute from "./components/PrivateRoute";
 
 
 
@@ -23,8 +23,8 @@ function App() {
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/add-post" element={<CreatePost/>}/>
-      <Route path="/student-dash" element={<StudentDash/>}/>
-      <Route path="/project-dash" element={<ProjectDash/>}>
+      <Route path="/student-dash" element={<PrivateRoute Component={StudentDash}/>}/>
+      <Route path="/project-dash" element={<PrivateRoute Component={ProjectDash}/>}>
         
         <Route index element={<ProjectOverview />} />
         

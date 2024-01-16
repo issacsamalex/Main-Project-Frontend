@@ -1,7 +1,8 @@
 // Import necessary dependencies
 import React, { useState } from 'react';
 import { TextField, Button, Box } from '@mui/material';
-import axios from 'axios';
+// import axios from 'axios';
+import axios from '../../axiosinterceptor'
 
 // AddComment component
 const AddComment = ({ postId, postAuthor }) => {
@@ -12,8 +13,7 @@ const AddComment = ({ postId, postAuthor }) => {
         try {
             // Check if the current user is not the author of the post
             if (userID !== postAuthor) {
-                const response = await axios.post(
-                    `http://localhost:3001/api/v1/post/${postId}/comments`,
+                const response = await axios.post(`/api/v1/post/${postId}/comments`,
                     {
                         text: commentText,
                         // Use userID as the author of the comment

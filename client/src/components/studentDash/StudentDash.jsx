@@ -2,7 +2,8 @@ import { Box, Container } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import NavBarStudentView from '../navBar/NavBarStudentView';
 import ProjectList from '../projectInfo/ProjectList';
-import axios from 'axios';
+import axios from '../../axiosinterceptor';
+import axiosInstance from '../../axiosinterceptor'
 
 const StudentDash = () => {
   const accessToken = localStorage.getItem('token');
@@ -10,10 +11,10 @@ const StudentDash = () => {
 
   const fetchData = async (accessToken) => {
     try {
-      const response = await axios.get('http://localhost:3001/api/v1/dash/student', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
+      const response = await axios.get('/api/v1/dash/student', {
+        // headers: {
+        //   Authorization: `Bearer ${accessToken}`,
+        // },
       });
       const studentData = response.data;
       setUserName(studentData.username.toUpperCase());

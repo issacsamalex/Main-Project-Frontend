@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import {
     List,
     ListItem,
@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import AddComment from './AddComment';
 import CreatePost from './CreatePost';
+import axios from '../../axiosinterceptor'
 
 const ViewPost = () => {
     const [posts, setPosts] = useState([]);
@@ -27,7 +28,7 @@ const ViewPost = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/v1/post');
+                const response = await axios.get('/api/v1/post');
                 const allPosts = response.data;
                 setPosts(allPosts);
             } catch (error) {

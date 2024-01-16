@@ -5,12 +5,14 @@ import { Container } from "@mui/system";
 
 import heroImg from "../media/hero-section-illustration.png";
 import Navbar from './navBar/Navbar';
+import Footer from './Footer';
 
   const CustomBox = styled(Box)(({ theme }) => ({
     display: "flex",
     justifyContent: "center",
     gap: theme.spacing(10),
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(7),
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
       alignItems: "center",
@@ -69,6 +71,7 @@ const main = () => {
             />
           </Box>
         </CustomBox>
+        <Footer/>
       </Container>
     </Box>
     </>

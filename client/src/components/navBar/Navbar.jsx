@@ -23,15 +23,6 @@ const Navbar = () => {
         },
       }));
     
-      const NavbarLinksBox = styled(Box)(({ theme }) => ({
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: theme.spacing(3),
-        [theme.breakpoints.down("md")]: {
-          display: "none",
-        },
-      }));
     
     
       const NavbarContainer = styled(Container)(({ theme }) => ({

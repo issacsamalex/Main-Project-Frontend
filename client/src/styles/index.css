@@ -17,3 +17,7 @@
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.css-99k93l-MuiContainer-root.MuiContainer-maxWidthLg{
+  padding: 10px 24px;
+}

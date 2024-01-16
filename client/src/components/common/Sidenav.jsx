@@ -11,8 +11,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import ProjectOverview from '../../pages/projectOverview/ProjectOverview';
 import { LuFiles } from "react-icons/lu";
 import { BsCalendar2Week } from "react-icons/bs";
@@ -35,11 +33,13 @@ import Week2pageSub from '../../pages/weeklySubmission/Week2pageSub';
 import Week3pageSub from '../../pages/weeklySubmission/Week3pageSub';
 import Week4pageSub from '../../pages/weeklySubmission/Week4pageSub';
 import FinalReportSubmission from '../../pages/finalReport/FinalReportSubmission';
-import axios from 'axios';
+import axios from '../../axiosinterceptor';
+import axiosInstance from '../../axiosinterceptor'
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import VoceSubmission from '../../pages/vivaVoce/VoceSubmission';
 import DiscussionForum from '../discussionForum/DiscussionForum';
+import ViewGrade from '../../pages/grades/ViewGrade';
 
 
 const drawerWidth = 240;
@@ -56,9 +56,9 @@ const Sidenav = () => {
     useEffect(() => {
         const fetchData = async () => {
             const userID = localStorage.getItem('userID');
-            const response = await axios.get(`http://localhost:3001/api/v1/dash/student/user/${userID}`)
+            const response = await axios.get(`/api/v1/dash/student/user/${userID}`)
             const projectId = response.data.project_id
-            const project = await axios.get(`http://localhost:3001/api/v1/dash/project/selected/${projectId}`)
+            const project = await axios.get(`/api/v1/dash/project/selected/${projectId}`)
             setProjectDetails(project.data)
             setEnrolledDate(response.data.enrolled_date)
             setFinalProject(response.data.finalsub)
@@ -166,6 +166,7 @@ const Sidenav = () => {
             borderColor= "#137d87"
             color="#137d87"
             buttonText="View Grades"
+            onclick={()=> setMenuData("viewgrade")}
             />
           </Box>
           <CustomButton
@@ -329,6 +330,7 @@ const Sidenav = () => {
         {menuData === "finalreportsubmission" && <FinalReportSubmission props={projectDetails}/>}
         {menuData === "vivavocesubmission" && <VoceSubmission props={projectDetails}/>}
         {menuData === "discussionforum" && <DiscussionForum/>}
+        {menuData === "viewgrade" && <ViewGrade/>}
       </Box>
     </Box>
   )

@@ -3,13 +3,12 @@ import TextField from '@mui/material/TextField';
 import { FaRegUser } from "react-icons/fa";
 import { TbPasswordUser } from "react-icons/tb";
 import '../styles/loginpage.css'
-import { Box, Container } from '@mui/material';
+import { Container } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomCTA from './customComponents/CustomCTA';
-import axios from 'axios';
+// import axios from 'axios';
 import toast from 'react-hot-toast';
-
-const LOGIN_URL = 'http://localhost:3001/api/v1/auth/login'
+import axios from '../axiosinterceptor'
 
 const Login = () => {
 
@@ -32,7 +31,7 @@ const Login = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(LOGIN_URL, {username, password}).then((response) => {
+      const response = await axios.post('/api/v1/auth/login', {username, password}).then((response) => {
         if(response){
           const accessToken = response?.data?.accessToken
           const userID = response?.data?.userID
